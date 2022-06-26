@@ -1,19 +1,21 @@
 <template>
-  <app-link :link="link" :external="external" class="card">
-    <gradient-box>
-      <div :class="[flex ? 'card-container-flex' : 'card-container']">
-        <div class="external-link" v-if="external">
-          <img src="/img/external-link.png" />
-        </div>
+  <div class="card">
+    <app-link :link="link" :external="external" class="card-item animation">
+      <gradient-box>
+        <div :class="[flex ? 'card-container-flex' : 'card-container']">
+          <div class="external-link" v-if="external">
+            <img src="/img/external-link.png" />
+          </div>
 
-        <div class="img-content"><img :src="img" /></div>
-        <div class="card-content">
-          <div class="card-content-title">{{ title }}</div>
-          <div class="card-content-text">{{ text }}</div>
+          <div class="img-content"><img :src="img" /></div>
+          <div class="card-content">
+            <div class="card-content-title">{{ title }}</div>
+            <div class="card-content-text">{{ text }}</div>
+          </div>
         </div>
-      </div>
-    </gradient-box>
-  </app-link>
+      </gradient-box>
+    </app-link>
+  </div>
 </template>
 
 <script>
@@ -32,14 +34,22 @@ export default {
 </script>
 
 <style lang="scss">
-.card > .GradientBox:hover {
-  box-shadow: var(--box-shadow);
-  transform: translateY(-2px);
+.card-item {
+  width: 100%;
 }
+
 .card-container-flex {
   display: flex;
   align-items: center;
   padding: 18px 18px 30px;
+
+  .ing-content {
+    width: 50px;
+  }
+
+  .card-content {
+    width: calc(100% - 50px);
+  }
 }
 .card-container {
   display: flex;
@@ -53,13 +63,14 @@ export default {
     font-size: 24px;
     font-weight: bold;
   }
-
-  .img-content {
-    height: 200px;
-    display: flex;
-    align-items: center;
-  }
 }
+
+.img-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .external-link {
   width: 100%;
   justify-content: flex-end;
